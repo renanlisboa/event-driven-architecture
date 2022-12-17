@@ -1,6 +1,6 @@
-import { EventDispatcher } from '../src/infra/event-dispatcher'
-import { MailerEventHandler } from '../src/application/event-handlers/mailer.event-handler'
-import { OrderPlacedEvent } from '../src/domain/events'
+import { EventDispatcher } from '../../src/infra/event-dispatcher'
+import { MailerEventHandler } from '../../src/application/event-handlers/mailer.event-handler'
+import { OrderPlacedEvent } from '../../src/domain/events'
 
 describe('EventDispatcher', () => {
   it('should register an event', async () => {
