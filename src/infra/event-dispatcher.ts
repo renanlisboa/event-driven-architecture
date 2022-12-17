@@ -1,5 +1,5 @@
-import { EventHandler } from '../application/event-handlers'
-import { Event } from '../domain/events'
+import { EventHandler } from '../application/contracts'
+import { Event } from '../domain/contracts'
 
 export class EventDispatcher {
   readonly eventHandlers: EventHandler[] = []

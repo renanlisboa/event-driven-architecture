@@ -1,4 +1,4 @@
-import { Event } from "./event"
+import { Event } from "../contracts"
 import { Order } from '../types'
 
 export class OrderPlacedEvent implements Event<Order> {

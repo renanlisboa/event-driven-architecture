@@ -1,4 +1,4 @@
-import { Event } from '../../domain/events/event'
+import { Event } from '../../domain/contracts'
 
 export interface EventHandler {
   eventName: string

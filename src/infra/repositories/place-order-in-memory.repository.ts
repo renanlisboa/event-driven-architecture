@@ -1,7 +1,4 @@
-import { 
-  OrderRepository, 
-  PlaceOrderOutput 
-} from '../../application/contracts/repositories'
+import { OrderRepository, PlaceOrderOutput } from '../../application/contracts/repositories'
 import { Order } from '../../domain/types'
 
 export class OrderRepositoryInMemory implements OrderRepository {

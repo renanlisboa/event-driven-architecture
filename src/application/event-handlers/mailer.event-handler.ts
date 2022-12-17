@@ -1,5 +1,5 @@
-import { EventHandler } from './event-handler'
-import { Event } from '../../domain/events/event'
+import { EventHandler } from '../contracts'
+import { Event } from '../../domain/contracts'
 
 export class MailerEventHandler implements EventHandler {
   eventName = 'OrderPlaced'

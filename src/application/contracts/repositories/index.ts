@@ -1,1 +1,1 @@
-export * from './place-order.repository'
+export * from './place-order-repository.contract'
