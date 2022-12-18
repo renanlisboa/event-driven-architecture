@@ -13,7 +13,11 @@ export class OrderPlacedEventHandler implements EventHandler {
         name: event.data.customer.name,
         email: event.data.customer.email
       },
-      message: `Hello Customer, your order #${event.data.orderNumber} was successfuly placed`
+      message: `
+        ORDER #${event.data.orderNumber}
+        
+        Hello ${event.data.customer.name}, your order was successfuly placed.
+      `
     }
     this.mailer.send(email)
   }
