@@ -1,0 +1,1 @@
+export * from './place-order-repository.contract'
