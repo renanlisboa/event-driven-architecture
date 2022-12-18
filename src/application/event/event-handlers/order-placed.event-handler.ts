@@ -1,5 +1,4 @@
-import { EventHandler } from '../../contracts'
-import { Mailer } from '../../contracts/mailer.contract'
+import { EventHandler, Mailer } from '../../contracts'
 import { OrderPlacedEvent } from '../../../domain/events'
 
 export class OrderPlacedEventHandler implements EventHandler {
