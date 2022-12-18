@@ -1,1 +1,1 @@
-export * from './mailer.event-handler'
+export * from './order-placed.event-handler'
