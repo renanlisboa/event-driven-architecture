@@ -1,34 +1,37 @@
-import { EventDispatcher } from '../../src/infra/event-dispatcher'
-import { MailerEventHandler } from '../../src/application/event-handlers/mailer.event-handler'
+import { InMemoryMailer } from '../../src/infra/mailers'
+import { EventDispatcher } from '../../src/application/event/event-dispatcher'
+import { OrderPlacedEventHandler } from '../../src/application/event/event-handlers'
 import { OrderPlacedEvent } from '../../src/domain/events'
 
 describe('EventDispatcher', () => {
   it('should register an event', async () => {
     const eventDispatcher = new EventDispatcher()
-    const mailerEventHandler = new MailerEventHandler()
+    const mailer = new InMemoryMailer()
+    const orderPlacedEventHandler = new OrderPlacedEventHandler(mailer)
     jest.spyOn(eventDispatcher, "register")
 
-    eventDispatcher.register(mailerEventHandler)
+    eventDispatcher.register(orderPlacedEventHandler)
 
-    expect(eventDispatcher.register).toHaveBeenCalledWith(mailerEventHandler)
-    expect(eventDispatcher.eventHandlers).toContain(mailerEventHandler)
+    expect(eventDispatcher.register).toHaveBeenCalledWith(orderPlacedEventHandler)
+    expect(eventDispatcher.eventHandlers).toContain(orderPlacedEventHandler)
   })
 
   it('should dispatch an event', () => {
     const eventDispatcher = new EventDispatcher()
-    const mailerEventHandler = new MailerEventHandler()
-    eventDispatcher.register(mailerEventHandler)
+    const mailer = new InMemoryMailer()
+    const orderPlacedEventHandler = new OrderPlacedEventHandler(mailer)
+    eventDispatcher.register(orderPlacedEventHandler)
     const orderPlacedEvent = new OrderPlacedEvent({
-      orderId: '1a2b3c',
-      customerId: 'a1b2c3',
-      itemId: 'c3b2a1',
-      quantity: 1,
-      total: 100,
+      orderNumber: 1,
+      customer: {
+        name: 'Customer',
+        email: 'costumer@gmail.com'
+      }
     })
-    jest.spyOn(mailerEventHandler, "handle")
+    jest.spyOn(orderPlacedEventHandler, "handle")
 
     eventDispatcher.dispatch(orderPlacedEvent)
     
-    expect(mailerEventHandler.handle).toHaveBeenCalledWith(orderPlacedEvent)
+    expect(orderPlacedEventHandler.handle).toHaveBeenCalledWith(orderPlacedEvent)
   })
 })
