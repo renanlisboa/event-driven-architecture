@@ -1,5 +1,5 @@
-export interface Event<T> {
+export interface Event {
   name: string
   dateTime: Date
-  data: T
+  data: any
 }

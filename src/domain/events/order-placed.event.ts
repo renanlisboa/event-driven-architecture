@@ -1,13 +1,20 @@
 import { Event } from "../contracts"
-import { Order } from '../types'
 
-export class OrderPlacedEvent implements Event<Order> {
+export class OrderPlacedEvent implements Event {
   name = 'OrderPlaced'
   dateTime: Date
-  data: Order
+  data: OrderPlacedEventData
 
-  constructor (data: Order) {
+  constructor (data: OrderPlacedEventData) {
     this.dateTime = new Date()
     this.data = data
+  }
+}
+
+type OrderPlacedEventData = {
+  orderNumber: number
+  customer: {
+    name: string
+    email: string
   }
 }
