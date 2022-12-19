@@ -15,7 +15,7 @@ export class PlaceOrder {
       orderNumber: output.orderNumber,
       customer: {
         name: 'Customer',
-        email: 'costumer@gmail.com'
+        email: 'customer@gmail.com'
       }
     })
     this.eventDispatcher.dispatch(orderPlacedEvent)
