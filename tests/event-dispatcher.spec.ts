@@ -25,7 +25,7 @@ describe('EventDispatcher', () => {
       orderNumber: 1,
       customer: {
         name: 'Customer',
-        email: 'costumer@gmail.com'
+        email: 'customer@gmail.com'
       }
     })
     jest.spyOn(orderPlacedEventHandler, "handle")
